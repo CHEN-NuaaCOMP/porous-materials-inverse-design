@@ -1,12 +1,9 @@
 # Response-conditioned inverse design of disordered aluminium foams
 
-This anonymized reviewer release contains the executable code needed to inspect
+This release contains the executable code needed to inspect
 and test the manuscript workflow. It includes data alignment, the forward
 response predictor, the conditional pore-set generator, deterministic candidate
-repair, response-aware screening, geometric parameter export, and reviewer-
-requested evaluation scripts. Generated outputs, training histories, figures,
-manuscript drafts, local paths, and archived implementations are intentionally
-excluded.
+repair, response-aware screening, geometric parameter export. 
 
 ## Repository contents
 
@@ -14,7 +11,6 @@ excluded.
 configs/reviewer.yaml          portable frozen configuration
 src/                           generator, repair, screening, and reconstruction code
 external_predictor/            PredictNet model, preprocessing, training, and weights
-analysis/                      reviewer-requested quantitative checks
 checkpoints/                   frozen generator and forward-model weights
 examples/                      one target curve and one pore-cloud input
 tests/test_smoke.py            shape, masking, normalization, and export checks
@@ -100,14 +96,6 @@ zero-strain origin. The adapter constructs the corresponding 51-point evaluation
 grid, and screening compares target and prediction on a common grid. This is an
 explicit module interface, not a checkpoint-shape mismatch.
 
-## Reviewer experiments
-
-Commands for forward-model evaluation, best-of-K analysis, response-guidance
-ablation, structural diversity, retrieval baseline, reconstructed-FE curve
-audit, and physical-test scaling are listed in
-[`docs/REVIEWER_EXPERIMENTS.md`](docs/REVIEWER_EXPERIMENTS.md).
-Mathematical definitions and architecture details are in
-[`docs/METHODS_AND_EQUATIONS.md`](docs/METHODS_AND_EQUATIONS.md).
 
 ## Scope boundary
 
