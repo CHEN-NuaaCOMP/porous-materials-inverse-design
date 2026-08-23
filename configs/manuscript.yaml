@@ -1,0 +1,108 @@
+project_root: ..
+seed: 42
+model_name: GeoLoop-PoreGen
+release_version: 2.1.0-manuscript-aligned
+
+data:
+  global_csv: data/full/global.csv
+  pore_dir: data/full/pore_cloud
+  curve_dir: data/full/stress_strain_responses
+  curve_kind: stress_strain
+  curve_columns: [Strain, Stress]
+  curve_points: 50
+  strain_min: 0.0
+  strain_max: 0.6
+  max_pores: 1200
+  cube_size_mm: 14.0
+  split_file: splits/generator_675_84_85.json
+
+forward_predictor:
+  split_file: splits/predictnet_727_117.json
+
+normalization:
+  response_transform: asinh
+  response_scale_quantile: 0.75
+
+model:
+  architecture: slot_query_v2
+  curve_hidden: 160
+  set_hidden: 192
+  latent_dim: 128
+  decoder_hidden: 512
+  slot_dim: 192
+  slot_attention_layers: 0
+  slot_attention_heads: 4
+  dropout: 0.05
+  macro_dim: 5
+  pore_feature_dim: 10
+
+training:
+  selection_mode: fixed_final
+  batch_size: 3
+  epochs: 100
+  learning_rate: 3.0e-6
+  min_learning_rate: 3.0e-7
+  lr_patience: 10
+  weight_decay: 1.0e-4
+  kl_warmup_epochs: 1
+  kl_free_bits: 0.02
+  set_loss_points: 320
+  response_base_score_weight: 0.50
+  response_predictnet_start_epoch: 1
+  response_predictnet_warmup_epochs: 1
+  response_predictnet_points: 1024
+  response_predictnet_selection: generation_topk_porosity
+  response_predictnet_presence_power: 0.0
+  marginal_feature_weights: [0.25, 0.25, 0.25, 0.6, 0.6, 0.6, 1.0, 1.0, 1.0, 1.0]
+  loss_weights:
+    pore: 1.0
+    presence: 0.35
+    macro: 0.25
+    porosity_consistency: 1.25
+    spatial_moments: 0.75
+    marginal_distribution: 0.20
+    response_predictnet: 0.75
+    kl: 0.01
+
+generation:
+  checkpoint: outputs/checkpoints/generator/best_model.pt
+  normalizer: outputs/checkpoints/generator/normalizer.json
+  candidates_per_target: 64
+  presence_selection: topk_porosity
+  presence_threshold: 0.5
+  presence_count_scale: 1.0
+  temperature: 0.8
+  output_dir: outputs/candidates
+
+screening:
+  target_porosity_tolerance: 0.04
+  target_pore_count_relative_tolerance: 0.25
+  min_pores: 40
+  max_pores: 1200
+  boundary_policy: allow_truncated
+  max_boundary_violation_fraction: 1.0
+  max_overlap_pair_fraction: 0.05
+  min_coverage_fraction: 0.35
+  require_response_prediction: true
+  max_curve_nrmse: 0.08
+  max_densification_nrmse: 0.12
+  max_terminal_relative_error: 0.25
+  porenet_checkpoint: checkpoints/predictnet_manuscript_8_16/best_model.pth
+  porenet_scalers: checkpoints/predictnet_manuscript_8_16/scalers.bin
+  porenet_code_dir: external_predictor
+  porenet_label_mode: global_log1p_standard
+  porenet_curve_points: 50
+
+response_validator:
+  name: GeoLoop-StressNet
+  checkpoint: outputs/stress_validator/best_model.pt
+  normalizer: outputs/stress_validator/normalizer.json
+  batch_size: 8
+  epochs: 200
+  learning_rate: 2.0e-4
+  hidden: 256
+
+reconstruction:
+  output_columns: [X, Y, Z, Area, Volume, Phi, Theta]
+  coordinate_unit: mm
+  angle_unit: rad
