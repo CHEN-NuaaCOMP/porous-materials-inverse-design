@@ -7,8 +7,7 @@ screening, gradient-based geometric refinement, and reconstruction export.
 
 All response curves are represented on 50 equally spaced nominal-strain nodes
 over 0--0.6. Sample filenames are unique identifiers; numeric prefixes are not
-used as grouping variables. The fixed partitions are 727/0/117 for PredictNet
-and 675/84/85 for the inverse generator.
+used as grouping variables.
 
 ## Repository layout
 
@@ -24,9 +23,7 @@ src/predict_candidate_responses.py      frozen-surrogate response prediction
 src/screen_candidates.py                geometry and response screening
 src/optimize_geometry.py                gradient-based geometric refinement
 src/export_for_reconstruction.py        reconstruction-table export
-analysis/                               manuscript analysis scripts
-checkpoints/                             released 50-node PredictNet checkpoint
-splits/                                  fixed sample-level split manifests
+checkpoints/                             released PredictNet checkpoint
 examples/                                minimal target curve and pore cloud
 tests/                                   smoke and manuscript-contract tests
 ```
@@ -44,11 +41,6 @@ Alternatively:
 python -m pip install -r requirements.txt
 ```
 
-Install the optional reconstruction dependencies with:
-
-```bash
-python -m pip install -r requirements-reconstruction.txt
-```
 
 The manuscript implementation used Python 3.10 and PyTorch 2.1.1.
 
@@ -171,8 +163,6 @@ python tests/test_release_data.py
 python tests/run_synthetic_training_smoke.py --help
 ```
 
-Implementation equations and notation are documented in
-`docs/METHODS_AND_EQUATIONS.md`.
 
 ## Citation
 
