@@ -179,5 +179,24 @@ python tests/run_synthetic_training_smoke.py --help
 
 ## Citation
 
-Please cite the associated manuscript when using this code or the released
-data.
+@article{zhao2026response,
+
+  title = {Response-function-conditioned inverse design enables disorder as a
+
+           design dimension in porous materials},
+
+  author = {Zhao, Wei and Chen, Ran and Zhang, Jiaxiu and Nan, Liangliang and
+
+            Wang, Song and Chen, Honghua and Yu, Hanyang and Chen, Songcan and
+
+            Wei, Mingqiang},
+
+  journal = {npj Computational Materials},
+
+  year = {2026},
+
+  doi = {10.1038/s41524-026-02367-5},
+
+  url = {https://doi.org/10.1038/s41524-026-02367-5}
+
+}.
