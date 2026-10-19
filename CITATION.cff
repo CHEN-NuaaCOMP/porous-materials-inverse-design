@@ -1,0 +1,75 @@
+cff-version: 1.2.0
+
+message: "If you use this repository, please cite the associated article."
+
+type: software
+
+title: "Porous materials inverse design"
+
+authors:
+
+  - name: "CHEN-NuaaCOMP"
+
+repository-code: "https://github.com/CHEN-NuaaCOMP/porous-materials-inverse-design"
+
+url: "https://github.com/CHEN-NuaaCOMP/porous-materials-inverse-design"
+
+license: MIT
+
+preferred-citation:
+
+  type: article
+
+  title: >-
+
+    Response-function-conditioned inverse design enables disorder as a design
+
+    dimension in porous materials
+
+  authors:
+
+    - family-names: "Zhao"
+
+      given-names: "Wei"
+
+    - family-names: "Chen"
+
+      given-names: "Ran"
+
+    - family-names: "Zhang"
+
+      given-names: "Jiaxiu"
+
+    - family-names: "Nan"
+
+      given-names: "Liangliang"
+
+    - family-names: "Wang"
+
+      given-names: "Song"
+
+    - family-names: "Chen"
+
+      given-names: "Honghua"
+
+    - family-names: "Yu"
+
+      given-names: "Hanyang"
+
+    - family-names: "Chen"
+
+      given-names: "Songcan"
+
+    - family-names: "Wei"
+
+      given-names: "Mingqiang"
+
+  journal: "npj Computational Materials"
+
+  year: 2026
+
+  month: 10
+
+  doi: "10.1038/s41524-026-02367-5"
+
+  url: "https://doi.org/10.1038/s41524-026-02367-5"
