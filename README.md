@@ -189,4 +189,5 @@ python tests/run_synthetic_training_smoke.py --help
   year = {2026},
   doi = {10.1038/s41524-026-02367-5},
   url = {https://doi.org/10.1038/s41524-026-02367-5}
-}.
+}
+
