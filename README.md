@@ -1,4 +1,17 @@
-# Response-conditioned inverse design of disordered aluminium foams
+# Response-function-conditioned inverse design enables disorder as a design dimension in porous materials
+
+
+Code and processed data accompanying:
+
+**Response-function-conditioned inverse design enables disorder as a design dimension in porous materials**
+
+Wei Zhao, Ran Chen, Jiaxiu Zhang, Liangliang Nan, Song Wang, Honghua Chen,
+
+Hanyang Yu, Songcan Chen, and Mingqiang Wei.
+
+*npj Computational Materials* (2026). Published online: 16 October 2026.
+
+**Paper:** [https://doi.org/10.1038/s41524-026-02367-5](https://doi.org/10.1038/s41524-026-02367-5)
 
 This repository contains the manuscript-aligned implementation of the complete
 computational workflow: pore-cloud data preparation, full-curve forward
